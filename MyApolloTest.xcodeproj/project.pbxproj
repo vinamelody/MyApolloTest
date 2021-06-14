@@ -17,10 +17,12 @@
 		5A355B9B26750045005AACAF /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 5A355B9A26750045005AACAF /* ApolloWebSocket */; };
 		5A355BA02675BAA1005AACAF /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A355B9F2675BAA1005AACAF /* schema.json */; };
 		5A9EFFBD267725F600618726 /* api.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5A9EFFBC267725F600618726 /* api.graphql */; };
+		5A9EFFC926773EC200618726 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFFC826773EC200618726 /* API.swift */; };
+		5AD40DC22677439400C8DFB0 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD40DC12677439400C8DFB0 /* Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5A355B7E2674FCF0005AACAF /* Apollo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Apollo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A355B7E2674FCF0005AACAF /* MyApolloTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyApolloTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A355B812674FCF0005AACAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A355B832674FCF1005AACAF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5A355B852674FCF4005AACAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -30,6 +32,8 @@
 		5A355B8E2674FCF4005AACAF /* Apollo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Apollo.entitlements; sourceTree = "<group>"; };
 		5A355B9F2675BAA1005AACAF /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		5A9EFFBC267725F600618726 /* api.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = api.graphql; sourceTree = "<group>"; };
+		5A9EFFC826773EC200618726 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		5AD40DC12677439400C8DFB0 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +61,7 @@
 		5A355B7F2674FCF0005AACAF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5A355B7E2674FCF0005AACAF /* Apollo.app */,
+				5A355B7E2674FCF0005AACAF /* MyApolloTest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,7 +70,8 @@
 			isa = PBXGroup;
 			children = (
 				5A355B812674FCF0005AACAF /* AppDelegate.swift */,
-				5A355B832674FCF1005AACAF /* ContentView.swift */,
+				5AD40DC4267748C600C8DFB0 /* Schedule */,
+				5AD40DC12677439400C8DFB0 /* Network.swift */,
 				5A355B852674FCF4005AACAF /* Assets.xcassets */,
 				5A355B8A2674FCF4005AACAF /* Main.storyboard */,
 				5A355B8D2674FCF4005AACAF /* Info.plist */,
@@ -74,6 +79,7 @@
 				5A355B872674FCF4005AACAF /* Preview Content */,
 				5A355B9F2675BAA1005AACAF /* schema.json */,
 				5A9EFFBC267725F600618726 /* api.graphql */,
+				5A9EFFC826773EC200618726 /* API.swift */,
 			);
 			path = Apollo;
 			sourceTree = "<group>";
@@ -86,13 +92,22 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		5AD40DC4267748C600C8DFB0 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				5A355B832674FCF1005AACAF /* ContentView.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5A355B7D2674FCF0005AACAF /* Apollo */ = {
+		5A355B7D2674FCF0005AACAF /* MyApolloTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5A355B912674FCF4005AACAF /* Build configuration list for PBXNativeTarget "Apollo" */;
+			buildConfigurationList = 5A355B912674FCF4005AACAF /* Build configuration list for PBXNativeTarget "MyApolloTest" */;
 			buildPhases = (
+				5A9EFFC12677380100618726 /* Apollo CLI */,
 				5A355B7A2674FCF0005AACAF /* Sources */,
 				5A355B7B2674FCF0005AACAF /* Frameworks */,
 				5A355B7C2674FCF0005AACAF /* Resources */,
@@ -101,14 +116,14 @@
 			);
 			dependencies = (
 			);
-			name = Apollo;
+			name = MyApolloTest;
 			packageProductDependencies = (
 				5A355B9626750045005AACAF /* Apollo */,
 				5A355B9826750045005AACAF /* ApolloCore */,
 				5A355B9A26750045005AACAF /* ApolloWebSocket */,
 			);
 			productName = Apollo;
-			productReference = 5A355B7E2674FCF0005AACAF /* Apollo.app */;
+			productReference = 5A355B7E2674FCF0005AACAF /* MyApolloTest.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -125,7 +140,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5A355B792674FCF0005AACAF /* Build configuration list for PBXProject "Apollo" */;
+			buildConfigurationList = 5A355B792674FCF0005AACAF /* Build configuration list for PBXProject "MyApolloTest" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -141,7 +156,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5A355B7D2674FCF0005AACAF /* Apollo */,
+				5A355B7D2674FCF0005AACAF /* MyApolloTest */,
 			);
 		};
 /* End PBXProject section */
@@ -161,12 +176,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5A9EFFC12677380100618726 /* Apollo CLI */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Apollo CLI";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd \"${SRCROOT}\"/ApolloCodegen\nxcrun -sdk macosx swift run ApolloCodegen generate\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5A355B7A2674FCF0005AACAF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5A355B842674FCF1005AACAF /* ContentView.swift in Sources */,
+				5A9EFFC926773EC200618726 /* API.swift in Sources */,
+				5AD40DC22677439400C8DFB0 /* Network.swift in Sources */,
 				5A355B822674FCF0005AACAF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,7 +389,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5A355B792674FCF0005AACAF /* Build configuration list for PBXProject "Apollo" */ = {
+		5A355B792674FCF0005AACAF /* Build configuration list for PBXProject "MyApolloTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5A355B8F2674FCF4005AACAF /* Debug */,
@@ -360,7 +398,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5A355B912674FCF4005AACAF /* Build configuration list for PBXNativeTarget "Apollo" */ = {
+		5A355B912674FCF4005AACAF /* Build configuration list for PBXNativeTarget "MyApolloTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5A355B922674FCF4005AACAF /* Debug */,
