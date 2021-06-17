@@ -1,0 +1,625 @@
+schema {
+  query: query_root
+  mutation: mutation_root
+  subscription: subscription_root
+}
+
+"""
+expression to compare columns of type Boolean. All fields are combined with logical 'AND'.
+"""
+input Boolean_comparison_exp {
+  _eq: Boolean
+  _gt: Boolean
+  _gte: Boolean
+  _in: [Boolean!]
+  _is_null: Boolean
+  _lt: Boolean
+  _lte: Boolean
+  _neq: Boolean
+  _nin: [Boolean!]
+}
+
+"""
+expression to compare columns of type Int. All fields are combined with logical 'AND'.
+"""
+input Int_comparison_exp {
+  _eq: Int
+  _gt: Int
+  _gte: Int
+  _in: [Int!]
+  _is_null: Boolean
+  _lt: Int
+  _lte: Int
+  _neq: Int
+  _nin: [Int!]
+}
+
+"""
+expression to compare columns of type String. All fields are combined with logical 'AND'.
+"""
+input String_comparison_exp {
+  _eq: String
+  _gt: String
+  _gte: String
+  _ilike: String
+  _in: [String!]
+  _is_null: Boolean
+  _like: String
+  _lt: String
+  _lte: String
+  _neq: String
+  _nilike: String
+  _nin: [String!]
+  _nlike: String
+  _nsimilar: String
+  _similar: String
+}
+
+"""
+input type for inserting array relation for remote table "feedback"
+"""
+input feedback_arr_rel_insert_input {
+  data: [feedback_insert_input!]!
+}
+
+"""
+input type for inserting data into table "feedback"
+"""
+input feedback_insert_input {
+  comment: String
+  feeling: String
+  talk_id: Int
+}
+
+"""
+response of any mutation on the table "feedback"
+"""
+type feedback_mutation_response {
+  """number of affected rows by the mutation"""
+  affected_rows: Int!
+}
+
+"""
+input type for inserting object relation for remote table "feedback"
+"""
+input feedback_obj_rel_insert_input {
+  data: feedback_insert_input!
+}
+
+"""
+columns and relationships of "maintenance"
+"""
+type maintenance {
+  created_at: timestamptz!
+  id: Int!
+  isMaintenance: Boolean!
+  maintenanceMessage: String
+  updated_at: timestamptz!
+}
+
+"""
+Boolean expression to filter rows from the table "maintenance". All fields are combined with a logical 'AND'.
+"""
+input maintenance_bool_exp {
+  _and: [maintenance_bool_exp]
+  _not: maintenance_bool_exp
+  _or: [maintenance_bool_exp]
+  created_at: timestamptz_comparison_exp
+  id: Int_comparison_exp
+  isMaintenance: Boolean_comparison_exp
+  maintenanceMessage: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+"""
+ordering options when selecting data from "maintenance"
+"""
+input maintenance_order_by {
+  created_at: order_by
+  id: order_by
+  isMaintenance: order_by
+  maintenanceMessage: order_by
+  updated_at: order_by
+}
+
+"""
+primary key columns input for table: "maintenance"
+"""
+input maintenance_pk_columns_input {
+  id: Int!
+}
+
+"""
+select columns of table "maintenance"
+"""
+enum maintenance_select_column {
+  """column name"""
+  created_at
+
+  """column name"""
+  id
+
+  """column name"""
+  isMaintenance
+
+  """column name"""
+  maintenanceMessage
+
+  """column name"""
+  updated_at
+}
+
+"""mutation root"""
+type mutation_root {
+  """
+  insert data into the table: "feedback"
+  """
+  insert_feedback(
+    """the rows to be inserted"""
+    objects: [feedback_insert_input!]!
+  ): feedback_mutation_response
+}
+
+"""column ordering options"""
+enum order_by {
+  """in the ascending order, nulls last"""
+  asc
+
+  """in the ascending order, nulls first"""
+  asc_nulls_first
+
+  """in the ascending order, nulls last"""
+  asc_nulls_last
+
+  """in the descending order, nulls first"""
+  desc
+
+  """in the descending order, nulls first"""
+  desc_nulls_first
+
+  """in the descending order, nulls last"""
+  desc_nulls_last
+}
+
+"""
+columns and relationships of "public_news"
+"""
+type public_news {
+  content: String
+  created_at: timestamptz
+  featured_image_url: String
+  id: Int
+  title: String
+  updated_at: timestamptz
+}
+
+"""
+Boolean expression to filter rows from the table "public_news". All fields are combined with a logical 'AND'.
+"""
+input public_news_bool_exp {
+  _and: [public_news_bool_exp]
+  _not: public_news_bool_exp
+  _or: [public_news_bool_exp]
+  content: String_comparison_exp
+  created_at: timestamptz_comparison_exp
+  featured_image_url: String_comparison_exp
+  id: Int_comparison_exp
+  title: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+"""
+ordering options when selecting data from "public_news"
+"""
+input public_news_order_by {
+  content: order_by
+  created_at: order_by
+  featured_image_url: order_by
+  id: order_by
+  title: order_by
+  updated_at: order_by
+}
+
+"""
+select columns of table "public_news"
+"""
+enum public_news_select_column {
+  """column name"""
+  content
+
+  """column name"""
+  created_at
+
+  """column name"""
+  featured_image_url
+
+  """column name"""
+  id
+
+  """column name"""
+  title
+
+  """column name"""
+  updated_at
+}
+
+"""query root"""
+type query_root {
+  """
+  fetch data from the table: "maintenance"
+  """
+  maintenance(
+    """distinct select on columns"""
+    distinct_on: [maintenance_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [maintenance_order_by!]
+
+    """filter the rows returned"""
+    where: maintenance_bool_exp
+  ): [maintenance!]!
+
+  """fetch data from the table: "maintenance" using primary key columns"""
+  maintenance_by_pk(id: Int!): maintenance
+
+  """
+  fetch data from the table: "public_news"
+  """
+  public_news(
+    """distinct select on columns"""
+    distinct_on: [public_news_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [public_news_order_by!]
+
+    """filter the rows returned"""
+    where: public_news_bool_exp
+  ): [public_news!]!
+
+  """
+  fetch data from the table: "schedule"
+  """
+  schedule(
+    """distinct select on columns"""
+    distinct_on: [schedule_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [schedule_order_by!]
+
+    """filter the rows returned"""
+    where: schedule_bool_exp
+  ): [schedule!]!
+
+  """
+  fetch data from the table: "talk_speakers_view"
+  """
+  talk_speakers_view(
+    """distinct select on columns"""
+    distinct_on: [talk_speakers_view_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [talk_speakers_view_order_by!]
+
+    """filter the rows returned"""
+    where: talk_speakers_view_bool_exp
+  ): [talk_speakers_view!]!
+}
+
+"""
+columns and relationships of "schedule"
+"""
+type schedule {
+  activity: String
+  end_at: timestamptz
+  id: Int
+
+  """An array relationship"""
+  speakers(
+    """distinct select on columns"""
+    distinct_on: [talk_speakers_view_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [talk_speakers_view_order_by!]
+
+    """filter the rows returned"""
+    where: talk_speakers_view_bool_exp
+  ): [talk_speakers_view!]!
+  start_at: timestamptz
+  talk_description: String
+  talk_type: String
+  title: String
+}
+
+"""
+Boolean expression to filter rows from the table "schedule". All fields are combined with a logical 'AND'.
+"""
+input schedule_bool_exp {
+  _and: [schedule_bool_exp]
+  _not: schedule_bool_exp
+  _or: [schedule_bool_exp]
+  activity: String_comparison_exp
+  end_at: timestamptz_comparison_exp
+  id: Int_comparison_exp
+  speakers: talk_speakers_view_bool_exp
+  start_at: timestamptz_comparison_exp
+  talk_description: String_comparison_exp
+  talk_type: String_comparison_exp
+  title: String_comparison_exp
+}
+
+"""
+ordering options when selecting data from "schedule"
+"""
+input schedule_order_by {
+  activity: order_by
+  end_at: order_by
+  id: order_by
+  start_at: order_by
+  talk_description: order_by
+  talk_type: order_by
+  title: order_by
+}
+
+"""
+select columns of table "schedule"
+"""
+enum schedule_select_column {
+  """column name"""
+  activity
+
+  """column name"""
+  end_at
+
+  """column name"""
+  id
+
+  """column name"""
+  start_at
+
+  """column name"""
+  talk_description
+
+  """column name"""
+  talk_type
+
+  """column name"""
+  title
+}
+
+"""subscription root"""
+type subscription_root {
+  """
+  fetch data from the table: "maintenance"
+  """
+  maintenance(
+    """distinct select on columns"""
+    distinct_on: [maintenance_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [maintenance_order_by!]
+
+    """filter the rows returned"""
+    where: maintenance_bool_exp
+  ): [maintenance!]!
+
+  """fetch data from the table: "maintenance" using primary key columns"""
+  maintenance_by_pk(id: Int!): maintenance
+
+  """
+  fetch data from the table: "public_news"
+  """
+  public_news(
+    """distinct select on columns"""
+    distinct_on: [public_news_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [public_news_order_by!]
+
+    """filter the rows returned"""
+    where: public_news_bool_exp
+  ): [public_news!]!
+
+  """
+  fetch data from the table: "schedule"
+  """
+  schedule(
+    """distinct select on columns"""
+    distinct_on: [schedule_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [schedule_order_by!]
+
+    """filter the rows returned"""
+    where: schedule_bool_exp
+  ): [schedule!]!
+
+  """
+  fetch data from the table: "talk_speakers_view"
+  """
+  talk_speakers_view(
+    """distinct select on columns"""
+    distinct_on: [talk_speakers_view_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [talk_speakers_view_order_by!]
+
+    """filter the rows returned"""
+    where: talk_speakers_view_bool_exp
+  ): [talk_speakers_view!]!
+}
+
+"""
+columns and relationships of "talk_speakers_view"
+"""
+type talk_speakers_view {
+  company: String
+  company_url: String
+  conference_id: String
+  created_at: timestamptz
+  id: Int
+  image_filename: String
+  image_url: String
+  linkedin_url: String
+  name: String
+  short_bio: String
+  talk_id: Int
+  twitter: String
+  updated_at: timestamptz
+}
+
+"""
+Boolean expression to filter rows from the table "talk_speakers_view". All fields are combined with a logical 'AND'.
+"""
+input talk_speakers_view_bool_exp {
+  _and: [talk_speakers_view_bool_exp]
+  _not: talk_speakers_view_bool_exp
+  _or: [talk_speakers_view_bool_exp]
+  company: String_comparison_exp
+  company_url: String_comparison_exp
+  conference_id: String_comparison_exp
+  created_at: timestamptz_comparison_exp
+  id: Int_comparison_exp
+  image_filename: String_comparison_exp
+  image_url: String_comparison_exp
+  linkedin_url: String_comparison_exp
+  name: String_comparison_exp
+  short_bio: String_comparison_exp
+  talk_id: Int_comparison_exp
+  twitter: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+"""
+ordering options when selecting data from "talk_speakers_view"
+"""
+input talk_speakers_view_order_by {
+  company: order_by
+  company_url: order_by
+  conference_id: order_by
+  created_at: order_by
+  id: order_by
+  image_filename: order_by
+  image_url: order_by
+  linkedin_url: order_by
+  name: order_by
+  short_bio: order_by
+  talk_id: order_by
+  twitter: order_by
+  updated_at: order_by
+}
+
+"""
+select columns of table "talk_speakers_view"
+"""
+enum talk_speakers_view_select_column {
+  """column name"""
+  company
+
+  """column name"""
+  company_url
+
+  """column name"""
+  conference_id
+
+  """column name"""
+  created_at
+
+  """column name"""
+  id
+
+  """column name"""
+  image_filename
+
+  """column name"""
+  image_url
+
+  """column name"""
+  linkedin_url
+
+  """column name"""
+  name
+
+  """column name"""
+  short_bio
+
+  """column name"""
+  talk_id
+
+  """column name"""
+  twitter
+
+  """column name"""
+  updated_at
+}
+
+scalar timestamptz
+
+"""
+expression to compare columns of type timestamptz. All fields are combined with logical 'AND'.
+"""
+input timestamptz_comparison_exp {
+  _eq: timestamptz
+  _gt: timestamptz
+  _gte: timestamptz
+  _in: [timestamptz!]
+  _is_null: Boolean
+  _lt: timestamptz
+  _lte: timestamptz
+  _neq: timestamptz
+  _nin: [timestamptz!]
+}
+
